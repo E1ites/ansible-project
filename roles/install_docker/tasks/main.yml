@@ -1,0 +1,46 @@
+- name: Установить необходимые пакеты
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg
+    - lsb-release
+
+- name: Добавить официальный Docker GPG ключ
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Добавить Docker репозиторий
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: Установить Docker и Docker Compose
+  apt:
+    name: 
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-compose-plugin
+    state: latest
+    update_cache: yes
+
+- name: Убедиться, что Docker запущен
+  service:
+    name: docker
+    state: started
+    enabled: true
+
+- name: Проверить версию docker compose
+  ansible.builtin.command: docker compose version
+  register: compose_version
+  changed_when: false
+
+- name: Показать версию docker compose
+  ansible.builtin.debug:
+    msg: "{{ compose_version.stdout }}"

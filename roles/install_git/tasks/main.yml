@@ -1,0 +1,6 @@
+---
+- name: Установить git (Debian/Ubuntu)
+  ansible.builtin.apt:
+    name: git
+    state: present
+  become: yes

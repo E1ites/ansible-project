@@ -1,0 +1,10 @@
+- name: Deploy docker project
+  hosts: app_servers
+  become: true
+
+  roles:
+    - install_git
+    - install_docker
+    - download_project
+    - run_project
+

@@ -1,0 +1,5 @@
+- name: Запустить docker compose через shell
+  ansible.builtin.shell: docker compose up -d --build
+  args:
+    chdir: "{{ git_dest }}"
+
