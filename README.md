@@ -47,12 +47,19 @@ ansible-playbook -i inventory/hosts playbook.yaml
 docker ps
 
 Порты:
+
 Приложение: http://ваш ip-aдрес:8000
+
 Prometheus: http://ваш ip-aдрес:9090
+
 Grafana: http://ваш ip-aдрес:3000
+
 Nginx Exporter: http://ваш ip-aдрес:9113/metrics
+
 Node Exporter: http://localhost:9100/metrics
+
 cAdvisor: http://localhost:8080/metrics
+
 ---
 
 ## 🛠 Что делает плейбук
