@@ -44,8 +44,10 @@ ansible-playbook -i inventory/hosts playbook.yaml
 ```
 3. Проверьте, запустились ли контейнеры: 
 
+```bash
 docker ps
 
+```
 Порты:
 
 Приложение: http://ваш ip-aдрес:8000
